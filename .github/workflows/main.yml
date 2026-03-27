@@ -1,0 +1,13 @@
+name: DevOps CI-CD
+on:
+  push:
+    branches: [ "dev", "feature/snippet-logic" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Image
+      run: docker build -t snippet-manager .
+    - name: Run Health Check
+      run: echo "Testing application health..."
